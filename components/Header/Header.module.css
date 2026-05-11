@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--badges);
+    background-color: var(--badges);
+    max-width: 1440px;
+    padding: 0 120px;
+}
+
+.headerLogo {
+    padding-top: 26px;
+    padding-bottom: 26px;
+}
+
+.headerNav {
+    display: flex;
+    gap: 32px;
+}
+
+.navLink {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: var(--main);
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
