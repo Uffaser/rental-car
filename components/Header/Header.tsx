@@ -9,13 +9,19 @@ export default function Header() {
           <use href="/sprite.svg#icon-rental-car"></use>
         </svg>
       </Link>
-      <nav className={style.headerNav}>
-        <Link className={style.navLink} href="/">
-          Home
-        </Link>
-        <Link className={style.navLink} href="/catalog">
-          Catalog
-        </Link>
+      <nav>
+        <ul className={style.headerNav}>
+          <li>
+            <Link className={style.navLink} href="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className={style.navLink} href="/catalog">
+              Catalog
+            </Link>
+          </li>
+        </ul>
       </nav>
     </header>
   );

@@ -1,0 +1,84 @@
+.catalogForm {
+    display: flex;
+    gap: 16px;
+    align-items: end;
+    justify-content: center;
+    margin-top: 84px;
+    margin-bottom: 54px;
+}
+
+.labelWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.selectLabel {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--gray);
+}
+
+.selectOne {
+    border-radius: 12px;
+    padding: 12px 16px;
+    width: 204px;
+    height: 44px;
+    background-color: var(--inputs);
+    border: none;
+}
+
+.selectOne::placeholder{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
+.selectDuo {
+
+    padding: 12px 24px;
+    width: 160px;
+    height: 44px;
+    background-color: var(--inputs);
+    border: none;
+}
+
+.selectDuo::placeholder {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
+.from {
+    border-radius: 12px 0 0 12px;
+    border-right: 1px solid var(--gray-light);
+}
+
+.to {
+    border-radius: 0 12px 12px 0;
+}
+
+.rangeSelection {
+    display: flex;
+}
+
+.formBtn {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+    border-radius: 12px;
+    padding: 12px 51px;
+    width: 156px;
+    height: 44px;
+    background: var(--button);
+}
+
+
