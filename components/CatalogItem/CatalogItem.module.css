@@ -11,8 +11,11 @@
 }
 
 .itemImg {
+    width: 276;
+    height: 268;
     border-radius: 14px;
     margin-bottom: 16px;
+    object-fit: cover;
 }
 
 .default {
@@ -36,7 +39,7 @@
 
 .catalogCard {
     width: 276px;
-    /* width: calc((100% - 32px * 3) / 4); */
+    height: 444px;
 }
 
 .cardTitle {
@@ -48,6 +51,10 @@
     line-height: 125%;
     color: var(--main);
     margin-bottom: 8px;
+}
+
+.itemTitle {
+    height: 40px;
 }
 
 .itemModel {
@@ -63,6 +70,7 @@
 }
 
 .ItemBtn {
+    display: block;
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 16px;

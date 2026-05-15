@@ -1,31 +1,14 @@
 import { cookies } from "next/headers";
-import { api } from "../api";
 import { NextResponse } from "next/server";
 import { isAxiosError } from "axios";
-import { logErrorResponse } from "../_utils/utils";
-import { perPage } from "@/lib/api/clientApi";
-
-    // const search = request.nextUrl.searchParams.get('search') ?? '';
-    // const page = Number(request.nextUrl.searchParams.get('page') ?? 1);
-    // const rawTag = request.nextUrl.searchParams.get('tag') ?? '';
-    // const tag = rawTag === 'All' ? '' : rawTag;
-
-    // const res = await api('/notes', {
-    //   params: {
-    //     ...(search !== '' && { search }),
-    //     page,
-    //     perPage: 12,
-    //     ...(tag && { tag }),
-    //   },
+import { logErrorResponse } from "../../_utils/utils";
+import { api } from "../../api";
 
 export async function GET() {
   try {
     const cookieStore = await cookies();
 
-    const res = await api.get("/cars", {
-      params: {
-        perPage: perPage,
-      },
+    const res = await api.get("/cars/filters", {
       headers: {
         Cookie: cookieStore.toString(),
       },

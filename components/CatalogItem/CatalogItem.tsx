@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import style from "./CatalogList.module.css";
+import style from "./CatalogItem.module.css";
 import { Car } from "@/types/car";
 
 type Props = {
@@ -21,6 +21,7 @@ export default function CatalogItem({ cars }: Props) {
               alt={car.description}
               width={276}
               height={268}
+              objectFit="cover"
             />
             <svg className={style.active} width={16} height={16}>
               <use href="/sprite.svg#icon-active-heart"></use>
@@ -38,8 +39,8 @@ export default function CatalogItem({ cars }: Props) {
             <p>${car.rentalPrice}</p>
           </div>
           <p className={style.carInfo}>
-            {car.address.split(",").slice(-2).join(" |")} | {car.rentalCompany}{" "}
-            |<br /> {car.type} | {car.mileage} KM
+            {car.location.city} | {car.location.country} | {car.rentalCompany} |
+            <br /> {car.type} | {car.mileage} KM
           </p>
           <Link className={style.ItemBtn} href={`/catalog/${car.id}`}>
             Read more

@@ -1,7 +1,7 @@
 .carDetails {
     display: flex;
     gap: 72px;
-    margin-top: 84px;
+    padding: 84px 120px 104px 120px;
 }
 
 .carImg {
@@ -9,6 +9,10 @@
     width: 640px;
     height: 512px;
     margin-bottom: 40px;
+}
+
+.carDetailsInfoBox {
+    width: 488px;
 }
 
 .carDetailsTitleBox {
@@ -31,12 +35,28 @@
     padding-top: 8px;
 }
 
+.mainInfoBox {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.locationBox {
+    display: flex;
+    gap: 4px;
+}
+
 .carDetailsPrice {
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 24px;
     line-height: 133%;
     color: var(--button);
+    margin-bottom: 32px;
+}
+
+.carDetailsDescr {
+    margin-bottom: 68px;
 }
 
 .carDetailsInfoTitle {
@@ -45,4 +65,17 @@
     font-size: 20px;
     line-height: 120%;
     color: var(--main);
+    margin-bottom: 20px;
+}
+
+.carInfoList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    margin-bottom: 110px;
+}
+
+.carInfoItem {
+    display: flex;
+    gap: 8px;
 }

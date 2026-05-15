@@ -3,9 +3,15 @@
 import { Field, Form, Formik } from "formik";
 import { useId } from "react";
 import style from "./CatalogForm.module.css";
+import CustomSelect from "../CustomSelect/CustomSelect";
+import { useQuery } from "@tanstack/react-query";
 
 export default function CatalogForm() {
   const fieldId = useId();
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['filter'],
+    queryFn: 
+  })
   return (
     <Formik initialValues={{}} onSubmit={() => {}}>
       <Form className={style.catalogForm}>
@@ -13,13 +19,14 @@ export default function CatalogForm() {
           <label className={style.selectLabel} htmlFor={`${fieldId}-brand`}>
             Car brand
           </label>
-          <Field
+          <CustomSelect id={`${fieldId}-brand`} value={} />
+          {/* <Field
             className={style.selectOne}
             type="select"
             name="brand"
             placeholder="Choose a brand"
             id={`${fieldId}-brand`}
-          ></Field>
+          ></Field> */}
         </div>
         <div className={style.labelWrapper}>
           <label className={style.selectLabel} htmlFor={`${fieldId}-price`}>
