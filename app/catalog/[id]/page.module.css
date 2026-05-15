@@ -1,0 +1,48 @@
+.carDetails {
+    display: flex;
+    gap: 72px;
+    margin-top: 84px;
+}
+
+.carImg {
+    border-radius: 19px;
+    width: 640px;
+    height: 512px;
+    margin-bottom: 40px;
+}
+
+.carDetailsTitleBox {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.carDetailsTitle{
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+}
+
+.carDetailsId {
+    color: var(--gray);
+    padding-top: 8px;
+}
+
+.carDetailsPrice {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--button);
+}
+
+.carDetailsInfoTitle {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+}

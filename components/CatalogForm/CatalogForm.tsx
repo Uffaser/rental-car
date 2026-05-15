@@ -3,7 +3,6 @@
 import { Field, Form, Formik } from "formik";
 import { useId } from "react";
 import style from "./CatalogForm.module.css";
-import CustomSelect from "../CustomSelect/CustomSelect";
 
 export default function CatalogForm() {
   const fieldId = useId();

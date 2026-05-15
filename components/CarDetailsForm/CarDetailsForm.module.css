@@ -1,0 +1,64 @@
+.carDetailsForm {
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    padding: 32px;
+    width: 640px;
+    height: 488px;
+    background-color: var(--white);
+}
+
+.carDetailsTitle {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+    margin-bottom: 8px;
+}
+
+.carDetailsSubtitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.carDetailsInput {
+    border-radius: 12px;
+    padding: 12px 20px;
+    width: 576px;
+    height: 48px;
+    background-color: var(--inputs);;
+    border: transparent;
+    margin-bottom: 16px;
+}
+
+.carDetailsInput:nth-child(6) {
+    margin-bottom: 24px;
+    height: 88px;
+}
+
+.carDetailsInput::placeholder {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--gray);
+}
+
+.carDetailsBtn {
+    display: block;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+    border-radius: 12px;
+    padding: 12px 51px;
+    width: 156px;
+    height: 44px;
+    background-color: var(--button);
+    margin: 0 auto;
+}

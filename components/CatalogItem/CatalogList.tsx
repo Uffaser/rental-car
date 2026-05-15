@@ -41,7 +41,7 @@ export default function CatalogItem({ cars }: Props) {
             {car.address.split(",").slice(-2).join(" |")} | {car.rentalCompany}{" "}
             |<br /> {car.type} | {car.mileage} KM
           </p>
-          <Link className={style.ItemBtn} href={`/car/${car.id}`}>
+          <Link className={style.ItemBtn} href={`/catalog/${car.id}`}>
             Read more
           </Link>
         </li>
