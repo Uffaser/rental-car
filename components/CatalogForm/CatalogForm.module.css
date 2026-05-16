@@ -21,37 +21,25 @@
 }
 
 .selectOne {
-    border-radius: 12px;
-    padding: 12px 16px;
-    width: 204px;
-    height: 44px;
-    background-color: var(--inputs);
-    border: none;
-}
-
-.selectOne::placeholder{
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 16px;
     line-height: 125%;
     color: var(--main);
+    width: 204px;
 }
 
 .selectDuo {
-
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
     padding: 12px 24px;
     width: 160px;
     height: 44px;
     background-color: var(--inputs);
     border: none;
-}
-
-.selectDuo::placeholder {
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
-    color: var(--main);
 }
 
 .from {

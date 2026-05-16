@@ -1,3 +1,19 @@
 .catalog{
     padding: 84px 120px 104px 120px;
 }    
+
+.catalogBtn {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+    border: 1px solid var(--button);
+    border-radius: 12px;
+    padding: 12px 36px;
+    width: 156px;
+    height: 44px;
+    background-color: transparent;
+    margin: 0 auto;
+    margin-top: 80px;
+}

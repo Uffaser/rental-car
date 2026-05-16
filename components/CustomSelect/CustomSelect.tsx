@@ -50,7 +50,7 @@ export default function CustomSelect({
   };
 
   const customStyles: StylesConfig<Option, false> = {
-    control: (base, state) => ({
+    control: (base) => ({
       ...base,
       display: "flex",
       alignItems: "center",

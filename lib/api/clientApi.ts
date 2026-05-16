@@ -1,4 +1,4 @@
-import { Car, CarsResponse } from "@/types/car"
+import { Car, CarsResponse, Filter } from "@/types/car"
 import { nextServer } from "./api"
 
 export const perPage = 12
@@ -19,5 +19,7 @@ export const getCarById = async (id: string) => {
 }
 
 export const getFilter = async () => {
-    const {data} = await nextServer.get<>('/cars/filters')
+    const { data } = await nextServer.get<Filter>('/cars/filters');
+
+    return data
 }

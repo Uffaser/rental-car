@@ -29,3 +29,13 @@ export interface CarsResponse {
     page: number;
     totalPages: number;
 };
+
+export interface Price {
+    min: number,
+    max: number,
+}
+
+export interface Filter {
+    brands: string[];
+    price: Price;
+}

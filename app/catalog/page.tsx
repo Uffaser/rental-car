@@ -16,6 +16,9 @@ export default function Catalog() {
     <section className={style.catalog}>
       <CatalogForm />
       <CatalogList cars={data?.cars} />
+      <button className={style.catalogBtn} type="button">
+        Load more
+      </button>
     </section>
   );
 }
