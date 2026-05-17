@@ -27,14 +27,14 @@ export default function CarDetails() {
           width={640}
           height={512}
         />
-        <CarDetailsForm />
+        <CarDetailsForm id={id} />
       </div>
       <div className={style.carDetailsInfoBox}>
         <div className={style.carDetailsTitleBox}>
           <h2 className={style.carDetailsTitle}>
             {data?.brand} {data?.model}, {data?.year}
           </h2>
-          <p className={style.carDetailsId}>Id: {data?.id.slice(-4)}</p>
+          <p className={style.carDetailsId}>Id: {data.stockNumber}</p>
         </div>
         <div className={style.mainInfoBox}>
           <div className={style.locationBox}>

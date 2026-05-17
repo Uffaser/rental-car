@@ -13,6 +13,7 @@ interface Option {
 }
 
 interface SelectProps {
+  name: string;
   id?: string;
   value: string;
   placeholder: string;
@@ -36,6 +37,7 @@ const DropdownIndicator = (props: DropdownIndicatorProps<Option, false>) => {
   );
 };
 export default function CustomSelect({
+  name,
   id,
   value,
   placeholder,
@@ -142,6 +144,7 @@ export default function CustomSelect({
   };
   return (
     <Select
+      name={name}
       instanceId={id}
       className={className}
       options={options}

@@ -1,30 +1,28 @@
 import { cookies } from "next/headers";
 import { api } from "../api";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { isAxiosError } from "axios";
 import { logErrorResponse } from "../_utils/utils";
 import { perPage } from "@/lib/api/clientApi";
 
-    // const search = request.nextUrl.searchParams.get('search') ?? '';
-    // const page = Number(request.nextUrl.searchParams.get('page') ?? 1);
-    // const rawTag = request.nextUrl.searchParams.get('tag') ?? '';
-    // const tag = rawTag === 'All' ? '' : rawTag;
-
-    // const res = await api('/notes', {
-    //   params: {
-    //     ...(search !== '' && { search }),
-    //     page,
-    //     perPage: 12,
-    //     ...(tag && { tag }),
-    //   },
-
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const brand = request.nextUrl.searchParams.get('brand')
+    const price = Number(request.nextUrl.searchParams.get('price'))
+    const minMileage = Number(request.nextUrl.searchParams.get('minMileage')) ?? 0
+    const maxMileage = Number(request.nextUrl.searchParams.get('maxMileage')) ?? 0
+    const page = Number(request.nextUrl.searchParams.get('page')) || 1
+
     const cookieStore = await cookies();
 
     const res = await api.get("/cars", {
       params: {
         perPage: perPage,
+        page,
+        ...(brand !== '' && { brand }),
+        ...(price !== null && price !== 0 && { price: Number(price) }),
+        minMileage: minMileage,
+        ...(maxMileage !== null && maxMileage !== 0 && { maxMileage: Number(maxMileage) }),
       },
       headers: {
         Cookie: cookieStore.toString(),

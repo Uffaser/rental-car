@@ -42,6 +42,14 @@
     border: none;
 }
 
+.selectDuo::placeholder {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
 .from {
     border-radius: 12px 0 0 12px;
     border-right: 1px solid var(--gray-light);
@@ -68,4 +76,12 @@
     background: var(--button);
 }
 
+.clearBtn {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--gray);
+    background-color: transparent;
+}
 
