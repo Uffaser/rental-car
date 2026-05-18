@@ -6,6 +6,7 @@ import style from "./CatalogForm.module.css";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import { useQuery } from "@tanstack/react-query";
 import { getFilter } from "@/lib/api/clientApi";
+import Loading from "@/components/Loading/Loading";
 
 function generatePrices(min: number, max: number, step: number) {
   const result: number[] = [];
@@ -45,8 +46,8 @@ export default function CatalogForm({
     queryFn: getFilter,
   });
 
-  if (!data) {
-    return "Error";
+  if (isError || !data) {
+    return <p className={style.errorText}>Error loading filters.</p>;
   }
 
   const brandOption = data.brands.map((brand) => ({
@@ -68,9 +69,7 @@ export default function CatalogForm({
     toMileage: "",
   };
 
-  const handleSubmit = (
-    values: FilterFormValues,
-  ) => {
+  const handleSubmit = (values: FilterFormValues) => {
     const parsedPrice = values.price ? Number(values.price) : 0;
     const parsedFrom = values.fromMileage ? Number(values.fromMileage) : 0;
     const parsedTo = values.toMileage ? Number(values.toMileage) : 0;

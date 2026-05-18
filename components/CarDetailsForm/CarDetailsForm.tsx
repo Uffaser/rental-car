@@ -1,13 +1,12 @@
-"use client";
-
 import { Field, Form, Formik, FormikHelpers } from "formik";
 import style from "./CarDetailsForm.module.css";
 import * as Yup from "yup";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { postBookingCar } from "@/lib/api/clientApi";
+import { NewBooking } from "@/types/car";
 
-export interface DetailsFormValues {
+interface DetailsFormValues {
   name: string;
   email: string;
   date: string;
@@ -44,7 +43,7 @@ const DetailsFormSchema = Yup.object().shape({
 
 export default function CarDetailsForm({ id }: Props) {
   const mutation = useMutation({
-    mutationFn: (values: DetailsFormValues) => postBookingCar(id, values),
+    mutationFn: (values: NewBooking) => postBookingCar(id, values),
     onSuccess: () => {
       toast.success("Завдання успішно створено!");
     },
@@ -57,15 +56,18 @@ export default function CarDetailsForm({ id }: Props) {
     values: DetailsFormValues,
     actions: FormikHelpers<DetailsFormValues>,
   ) => {
-    mutation.mutate(values, {
-      onSuccess: () => {
-        actions.resetForm();
-        actions.setSubmitting(false);
+    mutation.mutate(
+      { name: values.name, email: values.email, comment: values.comment },
+      {
+        onSuccess: () => {
+          actions.resetForm();
+          actions.setSubmitting(false);
+        },
+        onError: () => {
+          actions.setSubmitting(false);
+        },
       },
-      onError: () => {
-        actions.setSubmitting(false);
-      },
-    });
+    );
   };
   return (
     <Formik
@@ -91,6 +93,21 @@ export default function CarDetailsForm({ id }: Props) {
             name="email"
             placeholder="Email*"
           />
+          {/* <DatePicker
+            selected={selectedDate}
+            onChange={(date: Date | null) => setSelectedDate(date)}
+            placeholderText="Booking date"
+            className={css.input}
+            wrapperClassName={css.calendarWrapper}
+            minDate={new Date()}
+            // dateFormat="yyyy-MM-dd"
+            dateFormat="dd.MM.yyyy"
+            locale="enGB"
+            calendarClassName={css.calendar}
+            popperClassName={css.popper}
+            fixedHeight
+            customInput={<ReadOnlyInput />}
+          /> */}
           <Field
             className={style.carDetailsInput}
             type="date"
@@ -107,9 +124,9 @@ export default function CarDetailsForm({ id }: Props) {
           <button
             className={style.carDetailsBtn}
             type="submit"
-            disabled={mutation.status === "loading"}
+            disabled={mutation.status === "pending"}
           >
-            {mutation.status === "loading" ? "Sending..." : "Send"}
+            {mutation.status === "pending" ? "Sending..." : "Send"}
           </button>
         </fieldset>
       </Form>

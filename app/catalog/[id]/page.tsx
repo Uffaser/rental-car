@@ -1,6 +1,7 @@
 "use client";
 
 import CarDetailsForm from "@/components/CarDetailsForm/CarDetailsForm";
+import Loading from "@/components/Loading/Loading";
 import { getCarById } from "@/lib/api/clientApi";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -11,11 +12,21 @@ import "../../globals.css";
 export default function CarDetails() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["car"],
+    queryKey: ["car", id],
     queryFn: () => getCarById(id),
   });
 
-  if (!data) return;
+  if (isLoading) {
+    return <Loading message="Loading car details..." />;
+  }
+
+  if (isError) {
+    return <p>Error loading car details.</p>;
+  }
+
+  if (!data) {
+    return <p>No car details found.</p>;
+  }
 
   return (
     <section className={`${style.carDetails} container`}>

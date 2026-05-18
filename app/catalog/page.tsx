@@ -2,6 +2,7 @@
 
 import CatalogForm from "@/components/CatalogForm/CatalogForm";
 import CatalogList from "@/components/CatalogItem/CatalogItem";
+import Loading from "@/components/Loading/Loading";
 import { getAllCars } from "@/lib/api/clientApi";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import style from "./page.module.css";
@@ -13,26 +14,20 @@ export default function Catalog() {
   const [minMileage, setMinMileage] = useState<number>();
   const [maxMileage, setMaxMileage] = useState<number>();
 
-  const {
-    data,
-    isLoading,
-    isError,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: ["cars", brand, price, minMileage, maxMileage],
-    queryFn: ({ pageParam = 1 }) =>
-      getAllCars(brand, price, minMileage, maxMileage, pageParam),
+  const { data, isError, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["cars", brand, price, minMileage, maxMileage],
+      queryFn: ({ pageParam = 1 }) =>
+        getAllCars(brand, price, minMileage, maxMileage, pageParam),
 
-    getNextPageParam: (lastPage) => {
-      return lastPage.page < lastPage.totalPages
-        ? lastPage.page + 1
-        : undefined;
-    },
-    refetchOnWindowFocus: false,
-    initialPageParam: 1,
-  });
+      getNextPageParam: (lastPage) => {
+        return lastPage.page < lastPage.totalPages
+          ? lastPage.page + 1
+          : undefined;
+      },
+      refetchOnWindowFocus: false,
+      initialPageParam: 1,
+    });
 
   const resetFilters = () => {
     setBrand("");
@@ -55,13 +50,7 @@ export default function Catalog() {
         onChangeMaxMileage={setMaxMileage}
         onClearFilters={resetFilters}
       />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : isError ? (
-        <p>Error loading cars.</p>
-      ) : (
-        <CatalogList cars={cars} />
-      )}
+      {isError ? <p>Error loading cars.</p> : <CatalogList cars={cars} />}
       {hasNextPage && (
         <button
           className={style.catalogBtn}

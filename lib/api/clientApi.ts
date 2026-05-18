@@ -1,8 +1,12 @@
-import { Car, CarsResponse, Filter } from "@/types/car"
+import { Car, CarsResponse, Filter, NewBooking } from "@/types/car"
 import { nextServer } from "./api"
-import { DetailsFormValues } from "@/components/CarDetailsForm/CarDetailsForm";
+import axios from "axios";
 
 export const perPage = 12
+
+export const server = axios.create({
+    baseURL: 'https://car-rental-api.goit.study',
+})
 
 export const getAllCars = async (
   brand: string,
@@ -37,7 +41,8 @@ export const getFilter = async () => {
     return data
 }
 
-export const postBookingCar = async (id:string, payload: DetailsFormValues) => {
-    const { data } = await nextServer.post<DetailsFormValues>(`/cars/${id}/booking-requests`, payload);
+export const postBookingCar = async (id:string, payload: NewBooking) => {
+    const { data } = await server.post<NewBooking>(`/cars/${id}/booking-requests`, payload);
+    
     return data;
 }

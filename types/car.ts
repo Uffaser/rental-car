@@ -39,3 +39,9 @@ export interface Filter {
     brands: string[];
     price: Price;
 }
+
+export interface NewBooking {
+  name: string;
+  email: string;
+  comment: string;
+}
