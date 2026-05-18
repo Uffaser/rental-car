@@ -4,29 +4,57 @@ import { NextResponse } from "next/server";
 import { isAxiosError } from "axios";
 import { logErrorResponse } from "../../_utils/utils";
 
-type Props = {
-  params: Promise<{ id: string }>;
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-export async function GET(request: Request,{ params }: Props) {
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders });
+}
+
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    const cookieStore = await cookies();
-    const { id } = await params;
-    const res = await api(`/cars/${id}`, {
+    const cookieStore = cookies();
+
+    const res = await api.get(`/cars/${params.id}`, {
       headers: {
         Cookie: cookieStore.toString(),
       },
     });
-    return NextResponse.json(res.data, { status: res.status });
+
+    return NextResponse.json(res.data, {
+      status: res.status,
+      headers: corsHeaders,
+    });
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
+
       return NextResponse.json(
-        { error: error.message, response: error.response?.data },
-        { status: error.status }
+        {
+          error: error.message,
+          response: error.response?.data,
+        },
+        {
+          status: error.response?.status ?? 500,
+          headers: corsHeaders,
+        }
       );
     }
+
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      {
+        status: 500,
+        headers: corsHeaders,
+      }
+    );
   }
 }

@@ -23,7 +23,6 @@ export default function Header() {
               <Link
                 className={`${style.navLink} ${isHomePage ? style.activeNavLink : ""}`}
                 href="/"
-                target="blank"
               >
                 Home
               </Link>
@@ -32,7 +31,6 @@ export default function Header() {
               <Link
                 className={`${style.navLink} ${isCatalogPage ? style.activeNavLink : ""}`}
                 href="/catalog"
-                target="blank"
               >
                 Catalog
               </Link>
