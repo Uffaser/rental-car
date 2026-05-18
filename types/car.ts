@@ -41,7 +41,9 @@ export interface Filter {
 }
 
 export interface NewBooking {
-  name: string;
-  email: string;
-  comment: string;
+    name: string;
+    email: string;
+    date?: string;
+    comment?: string;
+    message?: string
 }

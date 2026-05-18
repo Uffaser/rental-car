@@ -41,7 +41,7 @@ export default function CatalogForm({
   onClearFilters,
 }: Props) {
   const fieldId = useId();
-  const { data, isLoading, isError } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: ["filter"],
     queryFn: getFilter,
   });

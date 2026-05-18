@@ -9,7 +9,7 @@ export default function Hero() {
         <p className={style.heroSubtitle}>
           Reliable and budget-friendly rentals for any journey
         </p>
-        <Link className={style.heroBtn} href="/catalog">
+        <Link className={style.heroBtn} href="/catalog" target="blank">
           View Catalog
         </Link>
       </div>

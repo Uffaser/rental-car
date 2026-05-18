@@ -26,18 +26,25 @@
 }
 
 .carDetailsInput {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
     border-radius: 12px;
     padding: 12px 20px;
     width: 576px;
-    height: 48px;
     background-color: var(--inputs);;
     border: transparent;
     margin-bottom: 16px;
 }
 
 .carDetailsInput:nth-child(6) {
-    margin-bottom: 24px;
     height: 88px;
+}
+
+.textarea {
+    margin-bottom: 24px;    
 }
 
 .carDetailsInput::placeholder {
@@ -61,4 +68,137 @@
     height: 44px;
     background-color: var(--button);
     margin: 0 auto;
+}
+
+.booking {
+    width: 100%;
+    max-width: 640px;
+    border: 1px solid var(--gray-light);
+    border-radius: 16px;
+    padding: 20px;
+    background: var(--white);
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--gray);
+    margin-bottom: 16px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.25;
+    color: var(--main);
+    border: none;
+    border-radius: 12px;
+    background-color: var(--inputs);
+    padding: 10px 16px;
+}
+
+.input {
+    height: 44px;
+}
+
+
+.calendarWrapper input {
+    margin-bottom: 16px;
+    width: 100%;
+    display: flex;
+    width: 576px;
+    box-sizing: border-box;
+}
+
+.calendarWrapper input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--gray);
+}
+
+.calendar {
+    border: 1px solid var(--button);
+    border-radius: 12px;
+    padding: 2px;
+    font-family: inherit;
+}
+
+.calendar :global(.react-datepickerheader) {
+    background-color: var(--white);
+    border-bottom: none;
+}
+
+.calendar :global(.react-datepickercurrent-month) {
+    color: var(--main);
+}
+
+.calendar :global(.react-datepicker__day-name) {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin: 0 4px;
+}
+
+.calendar :global(.react-datepickerday) {
+    border-radius: 50%;
+    transition: background-color 250ms ease;
+}
+
+.calendar :global(.react-datepickerday-names) {
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--button);
+}
+
+.calendar :global(.react-datepickerday--selected),
+.calendar :global(.react-datepickerday--keyboard-selected) {
+    background-color: var(--button);
+    color: var(--white);
+}
+
+.calendar :global(.react-datepickerday:hover) {
+    background-color: var(--gray-light);
+}
+
+.calendar :global(.react-datepickernavigation-icon::before) {
+    height: 12px;
+    width: 12px;
+    top: 12px;
+    border-color: var(--button);
+}
+
+.popper {
+    z-index: 20;
+}
+
+.error {
+    position: absolute;
+    top: 43px;
+    left: 8px;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: red;
+}
+
+.fieldWrapper {
+    position: relative;
 }

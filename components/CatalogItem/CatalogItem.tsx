@@ -42,7 +42,11 @@ export default function CatalogItem({ cars }: Props) {
             {car.location.city} | {car.location.country} | {car.rentalCompany} |
             <br /> {car.type} | {car.mileage} KM
           </p>
-          <Link className={style.ItemBtn} href={`/catalog/${car.id}`}>
+          <Link
+            className={style.ItemBtn}
+            href={`/catalog/${car.id}`}
+            target="_blank"
+          >
             Read more
           </Link>
         </li>
