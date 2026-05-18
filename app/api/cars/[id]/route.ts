@@ -14,14 +14,17 @@ export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders });
 }
 
+type Props = { params: Promise<{ id: string }>; };
+
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: Props
 ) {
   try {
     const cookieStore = cookies();
+    const { id } = await params;
 
-    const res = await api.get(`/cars/${params.id}`, {
+    const res = await api.get(`/cars/${id}`, {
       headers: {
         Cookie: cookieStore.toString(),
       },
