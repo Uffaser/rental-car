@@ -6,9 +6,8 @@ import style from "./Header.module.css";
 
 export default function Header() {
   const pathname = usePathname();
-  const isHomePage = pathname === "https://rental-car-pied-nine.vercel.app/";
-  const isCatalogPage =
-    pathname === "https://rental-car-pied-nine.vercel.app/catalog";
+  const isHomePage = pathname === "/";
+  const isCatalogPage = pathname === "/catalog";
 
   return (
     <header className={style.header}>
