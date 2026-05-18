@@ -36,7 +36,7 @@ export const getCarById = async (id: string) => {
 }
 
 export const getFilter = async () => {
-    const { data } = await nextServer.get<Filter>('/cars/filters');
+    const { data } = await server.get<Filter>('/cars/filters');
 
     return data
 }
