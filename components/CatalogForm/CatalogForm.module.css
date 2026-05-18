@@ -85,11 +85,3 @@
     background-color: transparent;
 }
 
-.errorText {
-    color: var(--danger, #c53030);
-    font-family: var(--font-family);
-    font-size: 14px;
-    text-align: center;
-    width: 100%;
-}
-

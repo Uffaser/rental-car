@@ -1,66 +1,24 @@
-"use client";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
+import CatalogPage from "@/components/CatalogPage/CatalogPage";
+import { getAllCars, getFilter } from "@/lib/api/clientApi";
 
-import CatalogForm from "@/components/CatalogForm/CatalogForm";
-import CatalogList from "@/components/CatalogItem/CatalogItem";
-import Loading from "@/components/Loading/Loading";
-import { getAllCars } from "@/lib/api/clientApi";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import style from "./page.module.css";
-import { useMemo, useState } from "react";
+export default async function Catalog() {
+  const queryClient = new QueryClient();
 
-export default function Catalog() {
-  const [brand, setBrand] = useState("");
-  const [price, setPrice] = useState(0);
-  const [minMileage, setMinMileage] = useState<number>();
-  const [maxMileage, setMaxMileage] = useState<number>();
-
-  const { data, isError, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfiniteQuery({
-      queryKey: ["cars", brand, price, minMileage, maxMileage],
+  await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: ["filter"],
+      queryFn: getFilter,
+    }),
+    queryClient.prefetchInfiniteQuery({
+      queryKey: ["cars", "", 0, undefined, undefined],
       queryFn: ({ pageParam = 1 }) =>
-        getAllCars(brand, price, minMileage, maxMileage, pageParam),
-
-      getNextPageParam: (lastPage) => {
-        return lastPage.page < lastPage.totalPages
-          ? lastPage.page + 1
-          : undefined;
-      },
-      refetchOnWindowFocus: false,
+        getAllCars("", 0, undefined, undefined, pageParam),
+      getNextPageParam: (lastPage: { page: number; totalPages: number }) =>
+        lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
       initialPageParam: 1,
-    });
+    }),
+  ]);
 
-  const resetFilters = () => {
-    setBrand("");
-    setPrice(0);
-    setMinMileage(0);
-    setMaxMileage(0);
-  };
-
-  const cars = useMemo(
-    () => data?.pages.flatMap((page) => page.cars) ?? [],
-    [data],
-  );
-
-  return (
-    <section className={style.catalog}>
-      <CatalogForm
-        onChangeBrand={setBrand}
-        onChangePrice={setPrice}
-        onChangeMinMileage={setMinMileage}
-        onChangeMaxMileage={setMaxMileage}
-        onClearFilters={resetFilters}
-      />
-      {isError ? <p>Error loading cars.</p> : <CatalogList cars={cars} />}
-      {hasNextPage && (
-        <button
-          className={style.catalogBtn}
-          type="button"
-          onClick={() => fetchNextPage()}
-          disabled={isFetchingNextPage}
-        >
-          {isFetchingNextPage ? "Loading..." : "Load more"}
-        </button>
-      )}
-    </section>
-  );
+  return <CatalogPage dehydratedState={dehydrate(queryClient)} />;
 }

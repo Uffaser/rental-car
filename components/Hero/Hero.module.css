@@ -1,5 +1,6 @@
 .hero {
-    height: 700px;
+    min-height: calc(100vh - 69px);
+    width: 100%;
     background-color: var(--badges);
     background-image: linear-gradient(to bottom,
                 rgba(0, 0, 0, 0.2),

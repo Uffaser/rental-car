@@ -2,11 +2,14 @@
 
 import { Field, Form, Formik } from "formik";
 import { useId } from "react";
+import dynamic from "next/dynamic";
 import style from "./CatalogForm.module.css";
-import CustomSelect from "../CustomSelect/CustomSelect";
+
+const CustomSelect = dynamic(() => import("../CustomSelect/CustomSelect"), {
+  ssr: false,
+});
 import { useQuery } from "@tanstack/react-query";
 import { getFilter } from "@/lib/api/clientApi";
-import Loading from "@/components/Loading/Loading";
 
 function generatePrices(min: number, max: number, step: number) {
   const result: number[] = [];
@@ -41,13 +44,17 @@ export default function CatalogForm({
   onClearFilters,
 }: Props) {
   const fieldId = useId();
-  const { data, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["filter"],
     queryFn: getFilter,
   });
 
+  if (isLoading) {
+    return <p>Loading filters...</p>;
+  }
+
   if (isError || !data) {
-    return <p className={style.errorText}>Error loading filters.</p>;
+    return <p>Error loading filters.</p>;
   }
 
   const brandOption = data.brands.map((brand) => ({

@@ -1,9 +1,17 @@
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: 1px solid var(--badges);
     background-color: var(--badges);
+    width: 100%;
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     max-width: 1440px;
     padding: 0 120px;
 }
@@ -27,8 +35,4 @@
     color: var(--main);
     padding-top: 24px;
     padding-bottom: 24px;
-}
-
-.activeNavLink {
-    color: var(--button);
 }
