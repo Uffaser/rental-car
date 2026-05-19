@@ -102,7 +102,7 @@ export default function CarDetailsForm({ id }: Props) {
               name="name"
               placeholder="Name*"
             />
-            <ErrorMessage name="email">
+            <ErrorMessage name="name">
               {(msg) => <span className={style.error}>{msg}</span>}
             </ErrorMessage>
           </div>
